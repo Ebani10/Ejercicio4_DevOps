@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - echo Procesando datos...
+      - python procesar.py
+  post_build:
+    commands:
+      - echo Validando resultado.txt...
+      - if [ -f resultado.txt ]; then echo "Validación exitosa"; else exit 1; fi
+artifacts:
+  files:
+    - '**/*'
