@@ -1,5 +1,4 @@
-Estado,Temperatura,Humedad,Costo_Alojamiento,Costo_Transporte,Dias_Promedi
-o,Tiempo_Traslado
+Estado,Temperatura,Humedad,Costo_Alojamiento,Costo_Transporte,Dias_Promedio,Tiempo_Traslado
 Aguascalientes,24,45,900,500,3,4
 Baja California,28,40,1200,1500,5,24
 Baja_California Sur,30,50,1800,2000,5,28
