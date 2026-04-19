@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Análisis Turístico</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; color: #333; display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        pre { background: #273bb3; color: white; padding: 20px; border-radius: 8px; font-size: 1.1em; white-space: pre-wrap; }
+        .status { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Análisis de Datos AWS</h1>
+        <p>Estado del Pipeline: <span class="status">● Sincronizado</span></p>
+        <pre id="output">Cargando datos desde EC2...</pre>
+    </div>
+
+    <script>
+        // REEMPLAZA CON TU IP PÚBLICA DE EC2
+        const IP_EC2 = '34.201.149.156'; 
+        
+        async function cargarDatos() {
+            try {
+                const response = await fetch(`http://${IP_EC2}/resultado.txt`);
+                if (!response.ok) throw new Error('No se pudo obtener el archivo');
+                const texto = await response.text();
+                document.getElementById('output').innerText = texto;
+            } catch (error) {
+                document.getElementById('output').innerText = "Error: Asegúrate de que la EC2 tenga HTTP habilitado y el archivo exista.";
+                console.error(error);
+            }
+        }
+        cargarDatos();
+    </script>
+</body>
+</html>
